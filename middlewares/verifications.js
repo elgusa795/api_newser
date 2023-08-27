@@ -3,6 +3,7 @@ import { listaIPs } from "../helpers/utils.js";
 
 const verifies = (req, res, next) => {
   console.log(req.ip.split(':').pop(), ' -> Intentando acceder...');
+  console.log(req);
   console.log(ORIGIN_URL);
 
   // Validate from blacklist

